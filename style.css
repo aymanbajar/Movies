@@ -1,0 +1,138 @@
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+}
+.swiper-wrapper img{
+    width: 100%;
+    height: 650px;
+}
+
+.swiper-container::after{
+    content: "Happy Watching";
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: -142px;
+    margin-left: 530px;
+    z-index: 1;
+    color: aqua;
+    font-size: 50px;
+}
+
+
+.cards{
+    padding: 0;
+    margin-top: -5px;
+    overflow-y: hidden;
+    width: 100%;
+
+
+}
+.aflam{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: -30px;
+    
+}
+.aflam img{
+    width: 290px;
+    height: 400px;
+}
+
+.movie
+{
+    width: 260px;
+    height: 420px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.movie:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    content: 'the platform 2019';
+    z-index: 1;
+
+}
+.movie:hover img{
+    border-radius:20px ;
+}
+
+
+
+.end{
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    margin-top: -40px;
+    height: 50px;
+    padding: 5px;
+    height: 70px;
+}
+/* @media (max-width: 768px) {
+   
+  
+    .aflam {
+        gap: 10px;
+    }
+    .aflam img {
+        width: 220px;
+        height: 220px;
+    }
+    .movie {
+        width: 140px;
+        height: 220px;
+    }
+    .end {
+        font-size: 16px;
+        height: 60px;
+    }
+
+    
+} */
+
+
+
+@media (max-width: 768px) {
+.swiper-container::after {
+        font-size: 30px;
+        margin-left: 80px;
+        margin-top: -100px;
+    }
+    .swiper-wrapper img {
+        height: 300px;
+    }
+        .swiper-button-next,
+    .swiper-button-prev{
+        margin-top: -125px;
+
+    }
+    .movie {
+        width: 140px;
+        height: 220px;
+    }
+
+.aflam img{
+    width: 140px;
+    height: 210px;
+}
+.end {
+    font-size: 14px;
+    height: 60px;
+    width: 410px;
+    margin-top: -10px;
+}
+.swiper-pagination{
+    position: relative;
+    margin-top: -40px;
+}
+}
