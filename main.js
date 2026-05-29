@@ -61,10 +61,15 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => loader.style.display = 'none', 500);
     }, 1000);
 
-    // 3. Render Categories
+    // 3. Init Theme
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+    }
+
+    // 4. Render Categories
     renderCategories();
 
-    // 4. Setup Event Listeners
+    // 5. Setup Event Listeners
     setupEventListeners();
 });
 
@@ -170,6 +175,30 @@ function setupEventListeners() {
             
             const watchlistedMovies = movies.filter(m => watchlist.includes(m.id));
             renderGrid(watchlistedMovies, 'watchlist-grid');
+        }
+    });
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = themeBtn.querySelector('i');
+    
+    // Set initial icon based on body class
+    if (document.body.classList.contains('light-mode')) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        
+        if (isLight) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
     });
 

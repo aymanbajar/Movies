@@ -11,6 +11,19 @@
     --modal-bg: rgba(30, 41, 59, 0.95);
 }
 
+/* Light Mode Overrides */
+body.light-mode {
+    --bg-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-color: #0ea5e9;
+    --accent-hover: #0284c7;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --modal-bg: rgba(255, 255, 255, 0.95);
+}
+
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -407,9 +420,9 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(128, 128, 128, 0.2);
     border: none;
-    color: #fff;
+    color: var(--text-primary);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -501,8 +514,8 @@ body {
 
 .secondary-btn {
     padding: 12px 25px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: rgba(128, 128, 128, 0.1);
+    color: var(--text-primary);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     font-size: 16px;
