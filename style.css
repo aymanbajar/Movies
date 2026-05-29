@@ -1,117 +1,277 @@
+/* CSS Variables for Dark Theme */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #38bdf8;
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
 
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 70px; /* Space for navbar */
+}
+
+/* Swiper Hero Section */
 .swiper-container {
     width: 100%;
-    height: 100%;
+    height: 60vh;
+    min-height: 400px;
+    position: relative;
+    border-radius: 20px;
     overflow: hidden;
-
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
+.swiper-slide {
+    position: relative;
+}
+
+.swiper-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
 .swiper-slide img {
     width: 100%;
-    height: auto;
-}
-.swiper-wrapper img{
-    width: 100%;
-    height: 650px;
-}
-
-.swiper-container::after{
-    content: "Happy Watching";
-    position: absolute;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    margin-top: -142px;
-    margin-left: 530px;
-    z-index: 1;
-    color: aqua;
-    font-size: 50px;
-}
-
-
-.cards{
-    padding: 0;
-    margin-top: -5px;
-    overflow-y: hidden;
-    width: 100%;
-
-
-}
-.aflam{
-    display: grid;
-    grid-template-columns: repeat(5,minmax(0,1fr)) ;
-    width: 100%;
-    
-}
-
-.aflam .movie img {
-    width: 100%;
-    height:100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.movie
-{
+/* Hero Text Overlay */
+.hero-overlay-text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 10;
+}
 
+.hero-overlay-text h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-overlay-text p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Swiper Navigation */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #fff !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--accent-color) !important;
+    opacity: 1;
+}
+
+/* Section Title */
+.section-title {
+    padding: 30px 20px 10px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+    font-weight: 600;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+/* Movies Grid */
+.cards {
+    padding: 20px;
+    width: 100%;
+}
+
+.aflam {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* Movie Card */
+.movie {
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.movie:hover{
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
     cursor: pointer;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.movie img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effects */
+.movie:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.movie:hover img {
     transform: scale(1.05);
-    z-index: 1;
-
-}
-.movie:hover img{
-    border-radius:20px ;
 }
 
+/* Play Icon Overlay */
+.movie::after {
+    content: '\f144'; /* FontAwesome Play Circle icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
 
+.movie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
 
-.end{
+.movie:hover::before,
+.movie:hover::after {
+    opacity: 1;
+}
+
+.movie:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Footer */
+.end {
     text-align: center;
-    font-weight: bold;
-    background-color: black;
-    color: white;
-    margin-top: -20px;
-    height: 50px;
-    padding: 5px;
-    height: 80px;
+    padding: 30px 20px;
+    margin-top: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--glass-border);
 }
 
+.end p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
 
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-.swiper-container::after {
-        font-size: 30px;
-        margin-left: 50px;
-        margin-top: -100px;
+    .hero-overlay-text {
+        bottom: 30px;
+        left: 20px;
     }
-    .swiper-wrapper img {
-        height: 300px;
+    .hero-overlay-text h1 {
+        font-size: 32px;
+    }
+    .hero-overlay-text p {
+        font-size: 14px;
     }
     .swiper-button-next,
-    .swiper-button-prev{
+    .swiper-button-prev {
         display: none;
-        overflow: hidden;   
-
     }
-   
-
-.end {
-    font-size: 14px;
-    height: 100px;
-    width: 368px;
-    margin-top: -10px;
-}
-.swiper-pagination{
-    position: relative;
-    margin-top: -40px;
-}
-.aflam{
-   display: grid;
-    grid-template-columns: repeat(5,minmax(0,1fr)) !important ;
-    width: 100%;
-   
-    
-}
+    .swiper-container {
+        height: 40vh;
+        border-radius: 0;
+        margin-top: 0;
+    }
+    .container {
+        padding-top: 60px;
+    }
+    .aflam {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
 }
