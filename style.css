@@ -601,4 +601,17 @@ body {
     .modal-actions {
         flex-direction: column;
     }
+
+    .category-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow-x: visible;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .category-row .movie {
+        flex: auto;
+        width: 100%;
+    }
 }
