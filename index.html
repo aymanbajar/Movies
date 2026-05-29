@@ -22,16 +22,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-wrapper">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">
+        <div class="logo" id="home-logo">
             <i class="fa-solid fa-film"></i>
             <span>Top Cinema</span>
         </div>
+        <div class="nav-actions">
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search movies...">
+            </div>
+            <button id="watchlist-btn" class="nav-btn">
+                <i class="fa-solid fa-heart"></i> Watchlist
+            </button>
+        </div>
     </nav>
 
-     <div class="container"> <!-- Start container-->
-        <div class="swiper-container"> <!-- Start swiper-container-->
+     <div class="container" id="main-content"> <!-- Start container-->
+        <div class="swiper-container" id="hero-swiper"> <!-- Start swiper-container-->
             <div class="swiper-wrapper">  <!-- Start swiper-wrapper-->
                 <div class="swiper-slide"><img src="photos/biker-384921_1280.jpg"></div>
                 <div class="swiper-slide"><img src="photos/action1.jpg"></div>
@@ -43,161 +57,74 @@
                 <div class="swiper-slide"><img src="photos/459385112_3783646711904034_8408406298165165415_n.jpg"></div>
                 <div class="swiper-slide"><img src="photos/MV5BZTkyMmFiODQtMjc5YS00MzE2LTg4ZDctOTI5MTg5ZTQzZDM2XkEyXkFqcGc_._V1_.jpg"></div>
                 <div class="swiper-slide"><img src="photos/motocross-4948269_1280.jpg"></div>
-            </div> ,<!--End swiper-wrapper -->
+            </div> <!--End swiper-wrapper -->
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
 
             <!-- Add Navigation -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+            
             <!-- Hero Overlay Text -->
             <div class="hero-overlay-text">
-                <h1>Happy Watching</h1>
+                <h1>Top Cinema</h1>
                 <p>Discover the best movies tailored for you.</p>
             </div>
         </div> <!-- End  swiper-container-->
 
-        <div class="section-title">
-            <h2>Trending Now</h2>
-        </div>
-        
-    <div class="cards">  <!--Start Cards-->
-        <div class="aflam">
-           <div id="the platform 2019" class="movie">
-            <img src="aflam/MV5BYjUyZjNmYmMtNjA1My00ZWMyLTliZGQtODgzZjIxM2Y4NGI1XkEyXkFqcGc_.jpg_V1_SX700-455x650.jpg">
-        </div>
-   
-           <div id="azreal 2024" class="movie">
-            <img src="aflam/images.jpg">
-        </div>
-   
-           <div id="harold and the purple crayon"  class="movie">
-            <img src="aflam/MV5BZGE3MmYxOTgtMGY1Ni00ZWQ4LTlhNjAtMzcxYjIzMjcwN2U1XkEyXkFqcGc_.jpg_V1_SX700-433x650.jpg">
-        </div>
-   
-           <div id="the wait 2023"  class="movie">
-            <img src="aflam/MV5BYmU3NGQzNGQtZDM2Ni00NzIxLWJjN2EtMjA4MmMxZTdkNTllXkEyXkFqcGc_.jpg_V1_SX700-439x650.jpg">
-        </div>
-           <div id="the platform 2 2024"class="movie">
-            <img src="aflam/1.jpg">
-        </div>
-           <div id="the diary 2024"class="movie">
-            <img src="aflam/2.jpg">
-            
-        </div>
-           <div id="lazareth 2024"  class="movie">
-            <img src="aflam/3.jpg">
-        </div>
-           <div id="things will be different" class="movie">
-            <img src="aflam/4.jpg">
-        </div>
-   
-           <div id="the meg the trench 2023"  class="movie">
-            <img src="aflam/5.jpg">
-        </div>
-   
-           <div id="fast five 2011" class="movie">
-            <img src="aflam/6.jpg">
-        </div>
-   
-           <div id="furious 7  2015" class="movie">
-            <img src="aflam/7.jpg">
-        </div>
-   
-           <div id="the fate of the furious 2017" class="movie">
-            <img src="aflam/8.jpg">
-        </div>
-   
-   
-           <div id="the fast saga 2021"  class="movie">
-            <img src="aflam/9.jpg">
-        </div>
-   
-   
-   
-           <div id="fast & furious presents hobbs & shaw" class="movie">
-            <img src="aflam/10.jpg">
-        </div>
-   
-   
-           <div id="the fast and furious 2001"  class="movie">
-            <img src="aflam/11.jpg">
-        </div>
-   
-   
-           <div id="fast 2 furious 20003 2"  class="movie">
-            <img src="aflam/12.jpg">
-        </div>
-           <div id="the fast and the furious tokyo drift 2006"  class="movie">
-            <img src="aflam/13.jpg">
-        </div>
-   
-           <div id="fast and furious 2009"  class="movie">
-            <img src="aflam/14.jpg">
-        </div>
-   
-           <div id="fast and furious 6 2013"class="movie">
-            <img src="aflam/15.jpg">
-        </div>
-   
-   
-           <div id="Sooryavanshi 2021" class="movie">
-            <img src="aflam/16.jpg">
+        <!-- Dynamic Movies Container (Categorized rows) -->
+        <div id="movies-container"></div>
+
+        <!-- Search Results Container (Hidden by default) -->
+        <div id="search-results-container" style="display: none;">
+            <div class="section-title">
+                <h2>Search Results</h2>
+            </div>
+            <div class="cards">
+                <div class="aflam" id="search-grid"></div>
+            </div>
         </div>
 
-           <div id="Joker"  class="movie   movive-21">
-            <img src="aflam/17.jpg">
+        <!-- Watchlist Container (Hidden by default) -->
+        <div id="watchlist-container" style="display: none;">
+            <div class="section-title">
+                <h2>My Watchlist</h2>
+            </div>
+            <div class="cards">
+                <div class="aflam" id="watchlist-grid"></div>
+            </div>
         </div>
-
-           <div id="little bites 2024" class="movie">
-            <img src="aflam/18.jpg">
-        </div>
-
-           <div id="wrongful death 2023" class="movie">
-            <img src="aflam/19.jpg">
-        </div>
-
-           <div id="a quiet place day one"  class="movie">
-            <img src="aflam/20.jpg">
-        </div>
-
-           <div id="Joker 2019"  class="movie">
-            <img src="aflam/21.jpg">
-        </div>
-           <div id="di san ge xian yi ren" class="movie">
-            <img src="aflam/22.jpg">
-        </div>
-           <div id="rescue on one’s own 2024"  class="movie">
-            <img src="aflam/23.jpg">
-        </div>
-           <div id="the legend of meng po 2024"  class="movie">
-            <img src="aflam/24.jpg">
-        </div>
-           <div id="samvidhan ( 2024 )"  class="movie">
-            <img src="aflam/25.jpg">
-        </div>
-           <div id="love death and cat "  class="movie">
-            <img src="aflam/26.jpg">
-        </div>
-
-        </div> <!--End Aflams-->
       
-    <footer class="end">
-        <p>جميع الحقوق محفوظة في الموقع &copy; 2024</p>
-    </footer>
+        <footer class="end">
+            <p>جميع الحقوق محفوظة في الموقع &copy; 2024</p>
+        </footer>
+    </div>  <!--End container-->
 
+    <!-- Movie Details Modal -->
+    <div id="movie-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal-btn"><i class="fa-solid fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img id="modal-img" src="" alt="Movie Poster">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Title</h2>
+                    <span id="modal-category" class="category-badge">Category</span>
+                    <p id="modal-desc" class="description">Description</p>
+                    <div class="modal-actions">
+                        <button id="modal-watch-btn" class="primary-btn"><i class="fa-solid fa-play"></i> Watch Now</button>
+                        <button id="modal-fav-btn" class="secondary-btn"><i class="fa-regular fa-heart"></i> Add to Watchlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-    </div>  <!--End Cards-->
-
-
-
-
-
-
-
-      </div> <!-- End container-->
-
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top-btn" class="scroll-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- Swiper's JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
