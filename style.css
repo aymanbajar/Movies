@@ -93,6 +93,12 @@ body {
     cursor: pointer;
 }
 
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -556,6 +562,13 @@ body {
         flex-direction: column;
         padding: 15px;
         gap: 15px;
+    }
+    
+    .nav-brand {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .nav-actions {
